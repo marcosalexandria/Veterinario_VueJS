@@ -29,6 +29,7 @@ header{
     height: 100px;
 }
 
+/* Imagem */
 #logo{
     float: left;
     width: 100px;

@@ -43,10 +43,11 @@ export default {
     },
 
     methods:{
+        //Faz os planos aparacerem
         yCheq(){
             this.cheq = true
         },
-        
+        //Faz os planos sumirem
         nCheq(){
             this.cheq = false
         }
@@ -67,6 +68,7 @@ div{
     margin: 10px;
 }
 
+/* Opções de convênio */
 #convenio{
     height: 25px;
     font-family: Arial, Helvetica, sans-serif;
