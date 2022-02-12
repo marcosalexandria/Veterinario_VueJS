@@ -1,20 +1,32 @@
 <template>
     <main>
         <div>
-            Valor do pedido: <Number/>
+            <label>Valor do pedido:</label> <Number/>
         </div>
-        <label>O cliente possui plano?</label>
+        <label>O cliente possui convênio?</label>
         <div>
             <Radio name="cheq" id="sim" @click="yCheq"/>Sim 
             <Radio name="cheq" id="nao" @click="nCheq"/>Não
         </div>
-        <p v-show="cheq">teste</p>
+        <div v-show="cheq">
+            <label>Selecione o Convênio: </label>
+            <select name="convenio" id="convenio">
+                <option selected disabled value=""></option>
+                <option>amigo dos animais</option>
+                <option>saúde animal</option>
+            </select>
+        </div>
+
+        <div>
+            <Button/>
+        </div>
     </main>
 </template>
 
 <script>
     import Number from './compForm/Number.vue'
     import Radio from './compForm/Radio.vue'
+    import Button from './compForm/Button.vue'
 export default {
     name:'Main',
 
@@ -26,7 +38,8 @@ export default {
 
     components:{
         Number,
-        Radio
+        Radio,
+        Button
     },
 
     methods:{
@@ -52,5 +65,12 @@ main{
 
 div{
     margin: 10px;
+}
+
+#convenio{
+    height: 25px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1.1em;
+    font-weight: bold;
 }
 </style>
