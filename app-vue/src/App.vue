@@ -1,6 +1,7 @@
 <template>
   <div>
-
+    <Header/>
+    <Main/>
   </div>
 </template>
 
@@ -16,3 +17,10 @@ export default {
   }
 }
 </script>
+
+<style>
+*{
+  margin: 0%;
+  padding: opx;
+}
+</style>
