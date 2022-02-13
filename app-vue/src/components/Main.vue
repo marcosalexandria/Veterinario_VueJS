@@ -1,7 +1,7 @@
 <template>
     <main>
         <div>
-            <label>Valor do pedido:</label> <Number/>
+            <label>Valor do pedido:</label> <Number id="preco"/>
         </div>
         <label>O cliente possui convênio?</label>
         <div>
@@ -18,7 +18,11 @@
         </div>
 
         <div>
-            <Button/>
+            <Button @click="finalizar"/>
+        </div>
+
+        <div id="res">
+
         </div>
     </main>
 </template>
@@ -32,7 +36,8 @@ export default {
 
     data(){
         return{
-            cheq:false
+            cheq:false,
+            desconto: Number
         }
     },
 
@@ -50,6 +55,29 @@ export default {
         //Faz os planos sumirem
         nCheq(){
             this.cheq = false
+        },
+
+        finalizar(){
+            const preco=document.getElementById('preco').value;
+            const sim=document.getElementById('sim').checked;
+            const nao=document.getElementById('nao').checked;
+            const res=document.getElementById('res');
+            const convenio=document.getElementById('convenio').value;
+
+            if(nao==''&&sim==''){
+                alert("*ERRO* O cliente possui convênio ou não?");
+
+            }else if(nao==true){
+                this.desconto=preco*10/100;
+                res.innerHTML=`Valor da compra R$ ${preco} <br>desconto: R$ ${this.desconto} <br>Total a pagar: R$ ${preco-this.desconto}`;
+                
+            }else if(sim==true&&convenio=='amigo dos animais'){
+                this.desconto=preco*30/100;
+                res.innerHTML=`Valor da compra R$ ${preco} <br>desconto: R$ ${this.desconto} <br>Total a pagar: R$ ${preco-this.desconto}`;
+            }else if(sim==true&&convenio=='saúde animal'){
+                this.desconto=preco*50/100;
+                res.innerHTML=`Valor da compra R$ ${preco} <br>desconto: R$ ${this.desconto} <br>Total a pagar: R$ ${preco-this.desconto}`;
+            }
         }
     }
 }
